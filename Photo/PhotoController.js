@@ -1,6 +1,6 @@
 const PhotoController = {
     uploadPhoto: async (photo)=>{
-        res.json(photo)
+        return ("you made it")
 
     }
 }
