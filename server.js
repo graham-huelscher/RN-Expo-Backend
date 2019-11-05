@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const port = process.env.PORT || process.argv[2] || 8080
 const PhotoRoutes = require('./Photo/PhotoRoutes')
 
 // Middleware
-app.use(express.json());
+app.use(bodyParser.json())
 
 app.get('/test', (req, res) => {
   console.log("test hit")
