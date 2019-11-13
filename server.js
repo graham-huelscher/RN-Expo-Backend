@@ -9,9 +9,12 @@ app.use(bodyParser.json())
 
 app.use('/api/photos', MainRoutes)
 
+app.get('/test', (req, res) => {
+  res.json("This is a test")
+})
 //Catch-all
 app.get('*', (req, res) => {
-  res.json("This is not the path you are looking for.")
+  res.json(req)
 })
 
 

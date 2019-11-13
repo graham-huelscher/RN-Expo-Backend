@@ -6,8 +6,8 @@ const CloudinaryController = require('../Cloudinary/CloudinaryController')
 
 
 router.post('/', async (req, res) => {
-    res.json(await CloudinaryController.uploadPhoto())
-    //res.json(await CloudinaryController.uploadPhoto(req.body))
+    //res.json(await CloudinaryController.uploadPhoto())
+    res.json(await CloudinaryController.uploadPhoto(req.body.photo))
 })
 
 router.get('/', async (req, res) => {
