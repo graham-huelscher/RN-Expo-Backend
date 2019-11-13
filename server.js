@@ -7,11 +7,6 @@ const MainRoutes = require('./routes/MainRoutes')
 // Middleware
 app.use(bodyParser.json())
 
-app.get('/test', (req, res) => {
-  console.log("test hit")
-    res.send("This should be returned")
-})
-
 app.use('/api/photos', MainRoutes)
 
 //Catch-all

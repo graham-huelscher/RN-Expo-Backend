@@ -15,7 +15,7 @@ const CloudinaryController = {
     },
     getPhoto: async () => {
         const response = cloudinary.url("sample.jpg", {quality: "auto", fetch_format: "auto"})
-        console.log(response)
+        return response
 
     }
 }
