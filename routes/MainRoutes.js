@@ -1,13 +1,15 @@
-require('dotenv').config()
 const express = require('express')
 const router = express.Router()
+const { dataUri, multerUploads } = require('../config')
 
 const CloudinaryController = require('../Cloudinary/CloudinaryController')
 
 
-router.post('/', async (req, res) => {
-    //res.json(await CloudinaryController.uploadPhoto())
-    res.json(await CloudinaryController.uploadPhoto(req.body.photo))
+router.post('/', multerUploads.single('photo'), async (req, res, next) => {
+
+    console.log('here')
+    const file = dataUri(req).content;
+    res.json(await CloudinaryController.uploadPhoto(file))
 })
 
 router.get('/', async (req, res) => {
