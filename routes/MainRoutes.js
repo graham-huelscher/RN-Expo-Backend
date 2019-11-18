@@ -7,7 +7,7 @@ const CloudinaryController = require('../Cloudinary/CloudinaryController')
 
 router.post('/', multerUploads.single('photo'), async (req, res, next) => {
 
-    console.log('here')
+    console.log(req.file)
     const file = dataUri(req).content;
     res.json(await CloudinaryController.uploadPhoto(file))
 })
