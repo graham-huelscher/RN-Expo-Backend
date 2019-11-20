@@ -5,10 +5,14 @@ const { dataUri, multerUploads } = require('../config')
 const CloudinaryController = require('../Cloudinary/CloudinaryController')
 
 
-router.post('/', multerUploads.single('photo'), async (req, res, next) => {
+router.post('/', multerUploads.fields([
+    { name: 'photo', maxCount: 1 },
+    { name: 'location', maxCount: 1 }
+  ]), async (req, res, next) => {
 
-    console.log(req.file)
-    const file = dataUri(req).content;
+    console.log(req.files)
+    const photo = req.files['photo'][0]
+    const file = dataUri(photo.originalname, photo.buffer).content;
     res.json(await CloudinaryController.uploadPhoto(file))
 })
 
