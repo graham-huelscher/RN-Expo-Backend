@@ -10,8 +10,9 @@ router.post('/', multerUploads.fields([
     { name: 'location', maxCount: 1 }
   ]), async (req, res, next) => {
 
-    console.log(req.body)
-    console.log(req.files)['location']
+    const location = JSON.parse(req.body.location)
+    console.log(req.files)
+    console.log(location)
     const photo = req.files['photo'][0]
     const file = dataUri(photo.originalname, photo.buffer).content;
     res.json(await CloudinaryController.uploadPhoto(file))
