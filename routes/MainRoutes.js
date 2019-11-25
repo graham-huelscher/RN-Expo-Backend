@@ -17,7 +17,7 @@ router.post('/', multerUploads.fields([
 
     const cloudinaryResponse = await CloudinaryController.uploadPhoto(file)
     console.log(cloudinaryResponse)
-    res.json('test')
+    res.json('post response')
 })
 
 router.get('/', async (req, res) => {
