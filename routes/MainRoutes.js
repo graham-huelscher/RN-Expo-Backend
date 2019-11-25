@@ -21,7 +21,6 @@ router.post('/', multerUploads.fields([
 })
 
 router.get('/', async (req, res) => {
-const MongoController = require('../MongoDbAtlas/MongoController')
     res.json(await MongoController.getPhotos())
 })
 
