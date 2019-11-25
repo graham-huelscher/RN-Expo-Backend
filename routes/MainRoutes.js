@@ -3,6 +3,7 @@ const router = express.Router()
 const { dataUri, multerUploads } = require('../config')
 
 const CloudinaryController = require('../Cloudinary/CloudinaryController')
+const MongoController = require('../MongoDbAtlas/MongoController')
 
 
 router.post('/', multerUploads.fields([
@@ -11,15 +12,17 @@ router.post('/', multerUploads.fields([
   ]), async (req, res, next) => {
 
     const location = JSON.parse(req.body.location)
-    console.log(req.files)
-    console.log(location)
     const photo = req.files['photo'][0]
     const file = dataUri(photo.originalname, photo.buffer).content;
-    res.json(await CloudinaryController.uploadPhoto(file))
+
+    const cloudinaryResponse = await CloudinaryController.uploadPhoto(file)
+    console.log(cloudinaryResponse)
+    res.json('test')
 })
 
 router.get('/', async (req, res) => {
-    res.json(await CloudinaryController.getPhoto())
+const MongoController = require('../MongoDbAtlas/MongoController')
+    res.json(await MongoController.getPhotos())
 })
 
 module.exports = router

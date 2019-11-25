@@ -7,14 +7,9 @@ const CloudinaryController = {
             result = await cloudinary.uploader.upload(photo)
 
         } catch (error) {
-            console.log(error)
+            result = error
         }
-        return ("you made it")
-    },
-    getPhoto: async () => {
-        const response = cloudinary.url("sample.jpg", { quality: "auto", fetch_format: "auto" })
-        return response
-
+        return (result)
     }
 }
 

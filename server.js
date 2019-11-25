@@ -13,7 +13,7 @@ app.use('/api/photos', MainRoutes)
 
 //Catch-all
 app.get('*', (req, res) => {
-  res.json(req)
+  res.json('This is not the endpoint you are looking for')
 })
 
 

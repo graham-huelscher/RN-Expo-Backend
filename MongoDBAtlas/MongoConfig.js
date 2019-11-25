@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const connectionString = `mongodb+srv://${process.env.MongoAtlasId}:${process.env.MongoAtlasPassword}@photodatabase-fit1u.mongodb.net/main?retryWrites=true&w=majority`
-mongoose.connect(connectionString, { useNewUrlParser: true });
+mongoose.connect(connectionString, { useNewUrlParser: true,  useUnifiedTopology: true });
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 
