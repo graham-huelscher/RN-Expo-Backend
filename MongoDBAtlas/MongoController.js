@@ -10,7 +10,7 @@ const MongoController = {
         //     currentRadius: 25,
         //     location: {
         //         coordinates: [-122.914141, 49.206341]
-        //     }
+        //     }  
         // }
         console.log(photo)
         const newPhoto = new Photo(photoObj)
