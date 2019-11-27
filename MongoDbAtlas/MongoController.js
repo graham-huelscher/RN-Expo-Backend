@@ -14,23 +14,12 @@ const MongoController = {
             }  
         }
         console.log(photoObj)
-          // const photoObj = {
-        //     public_id: 'anopther test',
-        //     securePhotoUrl: 'https://res.cloudinary.com/dyngvch1b/image/upload/v1574259987/gq4hd6fg7qsaeum3kc5h.png',
-        //     likes: 534,
-        //     currentRadius: 25,
-        //     location: {
-        //         coordinates: [-122.914141, 49.206341]
-        //     }  
-        // }
         const newPhoto = new Photo(photoObj)
         try {
             await newPhoto.save()
-            console.log('attempting to save')
             return { result: true }
         } 
         catch (err) {
-            console.log('error thrown')
             return { result: false, err }
         }
     },
