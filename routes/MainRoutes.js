@@ -16,8 +16,8 @@ router.post('/', multerUploads.fields([
     const file = dataUri(photo.originalname, photo.buffer).content;
 
     const cloudinaryResponse = await CloudinaryController.uploadPhoto(file)
-    console.log(cloudinaryResponse)
-    res.json('post response')
+
+    res.json(await MongoController.addToDb(cloudinaryResponse, location))
 })
 
 router.get('/', async (req, res) => {

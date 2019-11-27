@@ -2,7 +2,7 @@ const cloudinary = require('./CloudinaryConfig')
 
 const CloudinaryController = {
     uploadPhoto: async (photo) => {
-        let result = 400
+        let result
         try {
             result = await cloudinary.uploader.upload(photo)
 

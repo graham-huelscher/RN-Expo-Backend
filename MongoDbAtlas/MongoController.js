@@ -2,17 +2,17 @@ const mongoose = require('./MongoConfig')
 const Photo = require('./schemas/Photo')
 
 const MongoController = {
-    addToDb: async (photo) => {
-        // const photoObj = {
-        //     public_id: 'anopther test',
-        //     securePhotoUrl: 'https://res.cloudinary.com/dyngvch1b/image/upload/v1574259987/gq4hd6fg7qsaeum3kc5h.png',
-        //     likes: 534,
-        //     currentRadius: 25,
-        //     location: {
-        //         coordinates: [-122.914141, 49.206341]
-        //     }  
-        // }
-        console.log(photo)
+    addToDb: async (photo, location) => {
+        const photoObj = {
+            public_id: photo.public_id,
+            securePhotoUrl: photo.secure_url,
+            likes: 0,
+            currentRadius: 25,
+            location: {
+                coordinates: [location.coords.longitude, location.coords.latitude]
+            }  
+        }
+        
         const newPhoto = new Photo(photoObj)
         try {
             await newPhoto.save()
