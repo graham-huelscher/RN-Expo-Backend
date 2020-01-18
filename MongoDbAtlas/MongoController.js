@@ -3,7 +3,6 @@ const Photo = require('./schemas/Photo')
 
 const MongoController = {
     addToDb: async (photo, location) => {
-        console.log(photo, location)
         const photoObj = {
             public_id: photo.public_id,
             securePhotoUrl: photo.secure_url,
@@ -13,7 +12,6 @@ const MongoController = {
                 coordinates: [location.coords.longitude, location.coords.latitude]
             }  
         }
-        console.log(photoObj)
         const newPhoto = new Photo(photoObj)
         try {
             await newPhoto.save()
